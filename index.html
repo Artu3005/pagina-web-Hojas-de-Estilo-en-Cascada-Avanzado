@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio Interactivo de Café Marea, una tostaduría ficticia de Lambayeque.">
+  <title>Café Marea | Portafolio Interactivo</title>
+
+  <!-- Bootstrap 5 (CDN). Si no hay internet, se usa la copia local de vendor/ -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        onerror="this.onerror=null;this.href='vendor/bootstrap.min.css'">
+  <!-- Estilos propios -->
+  <link href="css/estilos.css" rel="stylesheet">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#barra" data-bs-root-margin="-80px 0px -55% 0px" data-bs-smooth-scroll="true">
+
+  <!-- Loader de carga inicial (CSS puro) -->
+  <div class="cargador" aria-hidden="true">
+    <span class="cargador__anillo"></span>
+  </div>
+
+  <!-- Barra de navegación -->
+  <nav id="barra" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+        <svg class="logo" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <ellipse cx="16" cy="16" rx="9" ry="13" transform="rotate(20 16 16)" fill="#F0A81C"></ellipse>
+          <path d="M13 5 C20 12 12 20 19 27" fill="none" stroke="#0F3B3A" stroke-width="2.4" stroke-linecap="round"></path>
+        </svg>
+        <span>Café Marea</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#menu" aria-controls="menu" aria-expanded="false"
+              aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Inicio -->
+    <section id="inicio" class="seccion">
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-md-5">
+          <div class="col-12 col-md-7">
+            <h1 class="hero__titulo">Café del norte peruano, tostado en Lambayeque</h1>
+            <p class="hero__texto lead">
+              Tostamos en lotes pequeños café de Jaén, San Ignacio y Villa Rica.
+              Mira los lotes de la temporada y escríbenos para hacer tu pedido.
+            </p>
+            <div class="hero__acciones d-flex flex-wrap gap-2">
+              <a class="btn btn-primary btn-lg" href="#proyectos">Ver proyectos</a>
+              <a class="btn btn-secondary btn-lg" href="#contacto">Contacto</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-5">
+            <div class="grano-zona">
+              <div class="grano" role="img" aria-label="Grano de café que pasa de verde a tostado"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos: transformaciones 2D -->
+    <section id="proyectos" class="seccion seccion--clara">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 col-md-8">
+            <h2>Proyectos: tres lotes de la temporada</h2>
+            <p>Pasa el mouse sobre cada lote (o tócalo en el celular) para ver cómo reacciona.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <article class="caja caja--rotar h-100" tabindex="0">
+              <h3>Jaén, lavado</h3>
+              <p>Notas de cacao y naranja. Tueste medio.</p>
+              <p class="caja__precio">S/ 38 por 250 g</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-4">
+            <article class="caja caja--escalar h-100" tabindex="0">
+              <h3>San Ignacio, honey</h3>
+              <p>Notas de panela y durazno. Tueste medio claro.</p>
+              <p class="caja__precio">S/ 42 por 250 g</p>
+            </article>
+          </div>
+          <div class="col-12 col-md-4">
+            <article class="caja caja--trasladar h-100" tabindex="0">
+              <h3>Villa Rica, natural</h3>
+              <p>Notas de fruta roja y chocolate. Tueste medio oscuro.</p>
+              <p class="caja__precio">S/ 45 por 250 g</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transformación 3D -->
+    <section id="bolsa" class="seccion">
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-md-5">
+          <div class="col-12 col-md-6 order-2 order-md-1">
+            <h2>La bolsa del mes</h2>
+            <p>
+              Cada mes elegimos un lote y lo empacamos en una bolsa numerada.
+              Gira la bolsa con el mouse (o tócala en el celular) para ver el dorso.
+            </p>
+          </div>
+          <div class="col-12 col-md-6 order-1 order-md-2">
+            <div class="escena" tabindex="0" aria-label="Bolsa del mes, se gira al pasar el mouse">
+              <div class="bolsa">
+                <div class="bolsa__cara bolsa__cara--frente">
+                  <span class="bolsa__marca">Café Marea</span>
+                  <span class="bolsa__lote">Jaén, lavado</span>
+                  <span class="bolsa__peso">250 g</span>
+                </div>
+                <div class="bolsa__cara bolsa__cara--dorso">
+                  <span class="bolsa__titulo">Tostado cada mes</span>
+                  <span>Lote numerado, tueste medio, molido a pedido.</span>
+                  <span>Pedido mínimo: 2 bolsas.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="seccion seccion--clara">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-8 col-lg-6">
+            <h2>Contacto</h2>
+            <p>Cuéntanos qué lote quieres y cuántas bolsas necesitas.</p>
+            <form id="formulario" novalidate>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" id="btn-enviar">
+                  <span class="mini-cargador" aria-hidden="true"></span>
+                  <span class="btn__texto">Enviar</span>
+                </button>
+                <button type="reset" class="btn btn-secondary">Limpiar</button>
+              </div>
+              <div id="estado" class="mt-3" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <div class="container">
+      <p class="mb-0">
+        Café Marea es un negocio ficticio creado para la Práctica Calificada 3
+        de Hojas de Estilo en Cascada Avanzado.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS (necesario para el menú hamburguesa) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          onerror="var s=document.createElement('script');s.src='vendor/bootstrap.bundle.min.js';document.head.appendChild(s);"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

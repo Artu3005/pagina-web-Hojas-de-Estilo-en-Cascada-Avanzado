@@ -1,0 +1,407 @@
+/* ==========================================================
+   Café Marea | Portafolio Interactivo
+   Práctica Calificada 3 - Hojas de Estilo en Cascada Avanzado
+   ========================================================== */
+
+/* ---------- Fuente local ---------- */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+/* ---------- Variables ---------- */
+:root {
+  --marea: #0F3B3A;        /* verde mar profundo (texto y fondos oscuros) */
+  --espuma: #EDF2EE;       /* fondo general */
+  --menta: #D5E4DA;        /* fondo de secciones y tarjeta 3 */
+  --oro: #F0A81C;          /* acento */
+  --verde-grano: #7FA253;  /* grano sin tostar */
+  --tostado: #3E2415;      /* grano tostado */
+
+  /* Bootstrap: el navbar con bg-dark toma el color de la marca */
+  --bs-dark-rgb: 15, 59, 58;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  padding-top: 64px;
+  overflow-x: clip;
+  background-color: var(--espuma);
+  color: var(--marea);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+.seccion {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.seccion--clara {
+  background-color: var(--menta);
+}
+
+/* ---------- Ajustes de componentes Bootstrap ---------- */
+.navbar {
+  --bs-navbar-color: rgba(255, 255, 255, 0.82);
+  --bs-navbar-hover-color: #fff;
+  --bs-navbar-active-color: var(--oro);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.btn {
+  font-weight: 600;
+}
+
+.btn-primary {
+  --bs-btn-color: var(--marea);
+  --bs-btn-bg: var(--oro);
+  --bs-btn-border-color: var(--oro);
+  --bs-btn-hover-color: var(--marea);
+  --bs-btn-hover-bg: #D99412;
+  --bs-btn-hover-border-color: #D99412;
+  --bs-btn-active-color: var(--marea);
+  --bs-btn-active-bg: #C58610;
+  --bs-btn-active-border-color: #C58610;
+  --bs-btn-focus-shadow-rgb: 240, 168, 28;
+}
+
+.btn-secondary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--marea);
+  --bs-btn-border-color: var(--marea);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #165755;
+  --bs-btn-hover-border-color: #165755;
+  --bs-btn-active-bg: #0B2D2C;
+  --bs-btn-active-border-color: #0B2D2C;
+  --bs-btn-focus-shadow-rgb: 15, 59, 58;
+}
+
+.form-control:focus {
+  border-color: var(--marea);
+  box-shadow: 0 0 0 0.25rem rgba(240, 168, 28, 0.45);
+}
+
+/* ==========================================================
+   ANIMACIONES (@keyframes)
+   ========================================================== */
+
+/* Giro continuo: usado por el loader y por el spinner del botón */
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+/* El loader de pantalla completa se desvanece solo */
+@keyframes ocultar {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Entrada del texto del hero: se desliza desde la izquierda */
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación personalizada: el grano cambia de color y de tamaño
+   mientras pasa de verde a tostado */
+@keyframes tostar {
+  0% {
+    background-color: var(--verde-grano);
+    transform: rotate(18deg) scale(0.88);
+  }
+  50% {
+    background-color: #B07A3A;
+  }
+  100% {
+    background-color: var(--tostado);
+    transform: rotate(18deg) scale(1.08);
+  }
+}
+
+/* ---------- Loader inicial ---------- */
+.cargador {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background-color: var(--marea);
+  animation-name: ocultar;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
+}
+
+.cargador__anillo {
+  width: 56px;
+  height: 56px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--oro);
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* ---------- Hero ---------- */
+.hero__titulo,
+.hero__texto,
+.hero__acciones {
+  animation-name: entrar;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+.hero__titulo {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  animation-delay: 1.3s;
+}
+
+.hero__texto {
+  max-width: 34rem;
+  margin-bottom: 1.75rem;
+  animation-delay: 1.45s;
+}
+
+.hero__acciones {
+  animation-delay: 1.6s;
+}
+
+/* Grano de café animado */
+.grano-zona {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 340px;
+}
+
+.grano {
+  position: relative;
+  width: 190px;
+  height: 270px;
+  border-radius: 50% 50% 50% 50% / 56% 56% 44% 44%;
+  background-color: var(--verde-grano);
+  box-shadow: inset -16px -20px 0 rgba(0, 0, 0, 0.16);
+  transform: rotate(18deg);
+  animation-name: tostar;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Surco central del grano */
+.grano::after {
+  content: "";
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  left: 47%;
+  width: 36px;
+  border-left: 9px solid rgba(15, 59, 58, 0.55);
+  border-radius: 60% 0 0 60% / 40% 0 0 40%;
+  transform: skewY(-8deg);
+}
+
+/* ==========================================================
+   TRANSFORMACIONES 2D + TRANSICIONES (sección Proyectos)
+   ========================================================== */
+.caja {
+  padding: 1.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.45s ease;
+}
+
+.caja h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.caja__precio {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.caja--rotar {
+  background-color: var(--oro);
+}
+
+.caja--escalar {
+  background-color: var(--marea);
+  color: #fff;
+}
+
+.caja--trasladar {
+  background-color: var(--espuma);
+}
+
+/* Caja 1: rotación */
+.caja--rotar:hover,
+.caja--rotar.activa,
+.caja--rotar:focus-visible {
+  transform: rotate(-4deg);
+  box-shadow: 8px 8px 0 var(--marea);
+}
+
+/* Caja 2: escalado */
+.caja--escalar:hover,
+.caja--escalar.activa,
+.caja--escalar:focus-visible {
+  transform: scale(1.07);
+  box-shadow: 8px 8px 0 var(--oro);
+}
+
+/* En móvil el escalado es menor para no salirse de la pantalla */
+@media (max-width: 575.98px) {
+  .caja--escalar:hover,
+  .caja--escalar.activa,
+  .caja--escalar:focus-visible {
+    transform: scale(1.03);
+  }
+}
+
+/* Caja 3: traslación + sesgado */
+.caja--trasladar:hover,
+.caja--trasladar.activa,
+.caja--trasladar:focus-visible {
+  transform: translateY(-14px) skewX(-4deg);
+  box-shadow: 8px 8px 0 var(--marea);
+}
+
+/* ==========================================================
+   TRANSFORMACIONES 3D (sección Bolsa del mes)
+   ========================================================== */
+.escena {
+  width: min(100%, 290px);
+  height: 390px;
+  margin-inline: auto;
+  perspective: 900px;               /* el padre define la perspectiva */
+  cursor: pointer;
+  outline-offset: 6px;
+}
+
+.bolsa {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;     /* los hijos conservan su posición 3D */
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.escena:hover .bolsa,
+.escena:focus-visible .bolsa,
+.escena.girada .bolsa {
+  transform: rotateX(10deg) rotateY(180deg);
+}
+
+.bolsa__cara {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.75rem 1.5rem;
+  border-radius: 0.5rem;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.bolsa__cara--frente {
+  background-color: var(--marea);
+  color: #fff;
+  border-top: 14px solid var(--oro);
+}
+
+.bolsa__cara--dorso {
+  background-color: var(--oro);
+  color: var(--marea);
+  transform: rotateY(180deg);
+}
+
+.bolsa__marca {
+  font-weight: 600;
+}
+
+.bolsa__lote {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.bolsa__peso {
+  font-weight: 600;
+}
+
+.bolsa__titulo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* ---------- Spinner dentro del botón Enviar ---------- */
+.mini-cargador {
+  display: none;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  vertical-align: -0.125em;
+  animation-name: girar;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.btn.enviando .mini-cargador {
+  display: inline-block;
+}
+
+/* ---------- Pie ---------- */
+.pie {
+  padding-block: 2rem;
+  background-color: var(--marea);
+  color: rgba(255, 255, 255, 0.85);
+}
